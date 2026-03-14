@@ -9,7 +9,7 @@ export function Footer() {
           </span>
         </div>
         <div className="text-[10px] text-muted-foreground/60 uppercase tracking-widest">
-          Built with Next.js &middot; Deployed on Vercel
+          Built with Next.js &middot; Deployed on Netlify
         </div>
       </div>
     </footer>
