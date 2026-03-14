@@ -1,6 +1,6 @@
 "use client"
 
-import { Mail, Phone, MapPin, Linkedin } from "lucide-react"
+import { Mail, MapPin, Linkedin, Github } from "lucide-react"
 import { SectionHeader } from "./about-section"
 
 const contacts = [
@@ -11,10 +11,10 @@ const contacts = [
     href: "mailto:giorgigochitidze555@gmail.com",
   },
   {
-    icon: <Phone className="w-4 h-4" />,
-    label: "Phone",
-    value: "+995-593-34-84-57",
-    href: "tel:+995593348457",
+    icon: <Github className="w-4 h-4" />,
+    label: "Github",
+    value: "Giorgi Gochitidze",
+    href: "https://github.com/GiorgiGochitidze",
   },
   {
     icon: <MapPin className="w-4 h-4" />,
