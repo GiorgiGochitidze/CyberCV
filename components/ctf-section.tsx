@@ -1,37 +1,37 @@
-"use client"
+"use client";
 
-import { useEffect, useState, useRef } from "react"
-import { SectionHeader } from "./about-section"
+import { useEffect, useState, useRef } from "react";
+import { SectionHeader } from "./about-section";
 
 function AnimatedCounter({ target, label }: { target: number; label: string }) {
-  const [count, setCount] = useState(0)
-  const ref = useRef<HTMLDivElement>(null)
-  const hasAnimated = useRef(false)
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated.current) {
-          hasAnimated.current = true
-          let start = 0
-          const increment = Math.max(1, Math.floor(target / 30))
+          hasAnimated.current = true;
+          let start = 0;
+          const increment = Math.max(1, Math.floor(target / 30));
           const timer = setInterval(() => {
-            start += increment
+            start += increment;
             if (start >= target) {
-              setCount(target)
-              clearInterval(timer)
+              setCount(target);
+              clearInterval(timer);
             } else {
-              setCount(start)
+              setCount(start);
             }
-          }, 50)
+          }, 50);
         }
       },
-      { threshold: 0.5 }
-    )
+      { threshold: 0.5 },
+    );
 
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [target])
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [target]);
 
   return (
     <div ref={ref} className="text-center">
@@ -42,10 +42,13 @@ function AnimatedCounter({ target, label }: { target: number; label: string }) {
         {label}
       </div>
     </div>
-  )
+  );
 }
 
 export function CtfSection() {
+  const easyMachines = 26;
+  const mediumMachines = 4;
+  const sumMachines = easyMachines + mediumMachines;
   return (
     <section id="ctf" className="py-24 px-6">
       <div className="max-w-5xl mx-auto">
@@ -69,14 +72,19 @@ export function CtfSection() {
               </h3>
 
               <div className="grid grid-cols-2 gap-6">
-                <AnimatedCounter target={26} label="Easy Machines" />
-                <AnimatedCounter target={4} label="Medium Machines" />
+                <AnimatedCounter target={easyMachines} label="Easy Machines" />
+                <AnimatedCounter
+                  target={mediumMachines}
+                  label="Medium Machines"
+                />
               </div>
 
               <div className="mt-6 pt-4 border-t border-border">
                 <div className="text-xs text-muted-foreground">
                   <span className="text-primary">{">"}</span> Notable:{" "}
-                  <span className="text-foreground font-semibold">Mr Robot</span>{" "}
+                  <span className="text-foreground font-semibold">
+                    Mr Robot
+                  </span>{" "}
                   CTF completed
                 </div>
               </div>
@@ -85,7 +93,7 @@ export function CtfSection() {
               <div className="mt-4">
                 <div className="flex justify-between text-[10px] text-muted-foreground mb-1">
                   <span>Progress</span>
-                  <span className="text-primary">29 machines</span>
+                  <span className="text-primary">{sumMachines} machines</span>
                 </div>
                 <div className="h-1.5 bg-secondary rounded-full overflow-hidden">
                   <div
@@ -144,5 +152,5 @@ export function CtfSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
