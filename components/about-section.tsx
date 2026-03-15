@@ -9,7 +9,7 @@ export function AboutSection() {
         <SectionHeader title="about" command="whoami" />
 
         <div className="grid md:grid-cols-3 gap-6 mt-10">
-          <div className="md:col-span-2">
+          <div className="md:col-span-2 items-stretch">
             <TerminalWindow title="~/about/bio.md">
               <p className="text-sm text-foreground/90 leading-relaxed">
                 <span className="text-primary/70">{"## "}</span>

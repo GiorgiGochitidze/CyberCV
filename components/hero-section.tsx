@@ -1,47 +1,47 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 
 const titles = [
   "Aspiring Ethical Hacker",
   "Penetration Tester",
   "Red Teamer",
   "Web App Pentester",
-]
+];
 
 export function HeroSection() {
-  const [currentTitle, setCurrentTitle] = useState("")
-  const [titleIndex, setTitleIndex] = useState(0)
-  const [charIndex, setCharIndex] = useState(0)
-  const [isDeleting, setIsDeleting] = useState(false)
+  const [currentTitle, setCurrentTitle] = useState("");
+  const [titleIndex, setTitleIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    const currentFullTitle = titles[titleIndex]
+    const currentFullTitle = titles[titleIndex];
 
     const timeout = setTimeout(
       () => {
         if (!isDeleting) {
-          setCurrentTitle(currentFullTitle.slice(0, charIndex + 1))
-          setCharIndex((prev) => prev + 1)
+          setCurrentTitle(currentFullTitle.slice(0, charIndex + 1));
+          setCharIndex((prev) => prev + 1);
 
           if (charIndex + 1 === currentFullTitle.length) {
-            setTimeout(() => setIsDeleting(true), 1800)
+            setTimeout(() => setIsDeleting(true), 1800);
           }
         } else {
-          setCurrentTitle(currentFullTitle.slice(0, charIndex - 1))
-          setCharIndex((prev) => prev - 1)
+          setCurrentTitle(currentFullTitle.slice(0, charIndex - 1));
+          setCharIndex((prev) => prev - 1);
 
           if (charIndex - 1 === 0) {
-            setIsDeleting(false)
-            setTitleIndex((prev) => (prev + 1) % titles.length)
+            setIsDeleting(false);
+            setTitleIndex((prev) => (prev + 1) % titles.length);
           }
         }
       },
-      isDeleting ? 40 : 80
-    )
+      isDeleting ? 40 : 80,
+    );
 
-    return () => clearTimeout(timeout)
-  }, [charIndex, isDeleting, titleIndex])
+    return () => clearTimeout(timeout);
+  }, [charIndex, isDeleting, titleIndex]);
 
   return (
     <section className="min-h-screen flex items-center justify-center px-6 relative">
@@ -96,14 +96,22 @@ export function HeroSection() {
               >
                 <span>{">"}</span> contact
               </a>
+              <a
+                href="https://tryhackme.com/p/giorgigochitidze555"
+                target="_blank"
+                className="inline-flex items-center gap-2 text-xs bg-secondary text-secondary-foreground border border-border px-4 py-2 rounded-md hover:border-accent/30 hover:text-accent transition-colors"
+              >
+                <span>{">"}</span> TryHackMe Profile
+              </a>
             </div>
 
             <div className="mt-8 text-xs text-muted-foreground">
-              <span className="text-primary">{"$"}</span> <span className="animate-blink">_</span>
+              <span className="text-primary">{"$"}</span>{" "}
+              <span className="animate-blink">_</span>
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

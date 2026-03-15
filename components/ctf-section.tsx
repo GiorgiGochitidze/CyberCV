@@ -70,7 +70,7 @@ export function CtfSection() {
 
               <div className="grid grid-cols-2 gap-6">
                 <AnimatedCounter target={26} label="Easy Machines" />
-                <AnimatedCounter target={3} label="Medium Machines" />
+                <AnimatedCounter target={4} label="Medium Machines" />
               </div>
 
               <div className="mt-6 pt-4 border-t border-border">
